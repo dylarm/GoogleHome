@@ -42,14 +42,14 @@ After=network.target ntpdate.service
  
 [Service]
 Type = idle
-Environment=VIRTUAL_ENV=/home/pi/env/
-Environment=PATH=/home/pi/env/bin:/usr/local/sbin:/usr/local
-ExecStart=/home/pi/env/bin/google-assistant-demo
-WorkingDirectory=/home/pi
+Environment=VIRTUAL_ENV=/home/rootaccess/env/
+Environment=PATH=/home/rootaccess/env/bin:/usr/local/sbin:/usr/local
+ExecStart=/home/rootaccess/env/bin/google-assistant-demo
+WorkingDirectory=/home/rootaccess
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
-User=pi
+User=rootaccess
  
 [Install]
 WantedBy=multi-user.target

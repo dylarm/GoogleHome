@@ -11,7 +11,7 @@ https://home-assistant.io/blog/2017/05/13/home-assistant-on-orange-pi-zero/
 Audio Configuration:
 https://www.cnx-software.com/2017/07/30/how-to-setup-an-orange-pi-zero-diy-smart-speaker-with-google-assistant-sdk/
 
-# Steps: 
+## Steps: 
 (Steps are briefly taken from the [audio configuration](https://www.cnx-software.com/2017/07/30/how-to-setup-an-orange-pi-zero-diy-smart-speaker-with-google-assistant-sdk/#setting-up-google-assistant-on-orange-pi-zero) above)
 1. [Create a project on the Google Cloud Platform](https://console.cloud.google.com/project)
 1. [Enable the Assistant API](https://console.developers.google.com/apis/api/embeddedassistant.googleapis.com/overview)
@@ -20,9 +20,9 @@ https://www.cnx-software.com/2017/07/30/how-to-setup-an-orange-pi-zero-diy-smart
 1. find Orange Pi ip address: http://angryip.org/
 1. Transfer the client secret .json to your Orange Pi.
 2. On your machine: `ssh rootaccess@IPAddress`
-# On the Orange Pi
+### On the Orange Pi
 3. Run the following block of commands:
-```
+```Shell
 sudo apt-get update
 sudo apt-get install python3-dev python3-venv
 python3 -m venv env
@@ -33,9 +33,9 @@ source env/bin/activate
 5. Now run `python -m pip install --upgrade google-assistant-library` on the Orange Pi to install the Google Assistant SDK, and `python -m pip install --upgrade google-auth-oauthlib[tool]` to install the authorization tool.
 6. Run the authorization tool: `google-oauthlib-tool --client-secrets ~/client_secret_xxxx.apps.googleusercontent.com.json --scope https://www.googleapis.com/auth/assistant-sdk-prototype --save --headless`, where the client_secret\*.json file is what you transfered to the Orange Pi.
 7. Now you can run the assistant! `google-assistant-demo`
-# Having the assistant run automatically
+### Having the assistant run automatically
 */etc/systemd/system/google-assistant-demo.service*:
-```
+```INI
 [Unit]
 Description=google assistant service
 After=network.target ntpdate.service
@@ -57,7 +57,7 @@ Alias=google-assistant.service
 ```
 
 Enable and start service:
-```
+```Shell
 sudo systemctl enable google-assistant-demo.service
 sudo systemctl start google-assistant-demo.service
 ```
